@@ -14,13 +14,6 @@ const minorVersion = 3
 app.use(express.static(__dirname + '/static'))
 app.use(cors({ origin: '*' }))
 
-// CORS
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
-
 // The app.get functions below are being processed in Node.js running on the server.
 app.get('/about', (request, response) => {
 	console.log('Calling "/about" on the Node.js server.')
@@ -39,12 +32,14 @@ app.get('/api/ping', (request, response) => {
 	response.type('text/plain')
 	response.send('ping response')
 })
+
 app.get('/rollDice',(request, response) => {
 	console.log('Calling "/rollDice" on the Node.js server.')
 	var randomNumber = Math.floor(Math.random() * 6) + 1;
 	response.type('text/plain')
 	response.send(randomNumber.toString())
-}
+})
+
 app.get('/2plus2', (request, response) => {
 	console.log('Calling "/2plus2" on the Node.js server.')
 	response.type('text/plain')
