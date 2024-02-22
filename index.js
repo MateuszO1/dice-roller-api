@@ -15,6 +15,23 @@ app.use(express.static(__dirname + '/static'))
 app.use(cors({ origin: '*' }))
 
 // The app.get functions below are being processed in Node.js running on the server.
+app.get('/about', (request, response) => {
+	console.log('Calling "/about" on the Node.js server.')
+	response.type('text/plain')
+	response.send('About Node.js on Azure Template.')
+})
+
+app.get('/version', (request, response) => {
+	console.log('Calling "/version" on the Node.js server.')
+	response.type('text/plain')
+	response.send('Version: '+majorVersion+'.'+minorVersion)
+})
+
+app.get('/api/ping', (request, response) => {
+	console.log('Calling "/api/ping"')
+	response.type('text/plain')
+	response.send('ping response')
+})
 app.get('/2plus2', (request, response) => {
 	console.log('Calling "/2plus2" on the Node.js server.')
 	response.type('text/plain')
