@@ -32,6 +32,12 @@ app.get('/api/ping', (request, response) => {
 	response.type('text/plain')
 	response.send('ping response')
 })
+app.get('/rollDice',(request, response) => {
+	console.log('Calling "/rollDice" on the Node.js server.')
+	var randomNumber = Math.floor(Math.random() * 6) + 1;
+	response.type('text/plain')
+	response.send(randomNumber.toString())
+}
 app.get('/2plus2', (request, response) => {
 	console.log('Calling "/2plus2" on the Node.js server.')
 	response.type('text/plain')
