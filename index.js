@@ -14,6 +14,13 @@ const minorVersion = 3
 app.use(express.static(__dirname + '/static'))
 app.use(cors({ origin: '*' }))
 
+// CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 // The app.get functions below are being processed in Node.js running on the server.
 app.get('/about', (request, response) => {
 	console.log('Calling "/about" on the Node.js server.')
