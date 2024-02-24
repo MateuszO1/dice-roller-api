@@ -59,3 +59,16 @@ app.listen(port, () => console.log(
   `Express started at \"http://localhost:${port}\"\n` +
   `press Ctrl-C to terminate.`)
 )
+
+async function testMERNaServerConnection() {
+	const response = await fetch("https://dice-roller-api.azurewebsites.net//api/ping");
+	const pingResponse = await response.text();
+
+	if (pingResponse === 'ping response') {
+		pingField.innerHTML = "Success!";
+		var div = document.getElementById('testingDiv');
+		div.style.display = 'block';
+	} 
+}
+
+testMERNaServerConnection();
